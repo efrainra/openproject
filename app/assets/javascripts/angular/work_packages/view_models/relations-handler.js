@@ -98,7 +98,12 @@ angular.module('openproject.viewModels')
                                    frequency: 0.5,
                                    paramName: 'q',
                                    updateElement: function(value) {
+                                     // Have to use the duplicate assignment here to update the field
+                                     // * to the user
+                                     // * to the angular scope
+                                     // Doing just one will not suffice.
                                      document.getElementById('relation_to_id-' + relationsId).value = value.id;
+                                     jQuery('#relation_to_id-' + relationsId).scope().relationToAddId = value.id;
                                    },
                                    parameters: 'scope=all'
                                    });
